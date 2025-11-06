@@ -675,9 +675,13 @@ spec:
 
 ### 5.6. 利用大权限的 Service Account
 
-在 POD 启动时，Kubernetes 会默认为容器挂载一个 Service Account（服务账号）的 token 和证书。同时，默认情况下 Kubernetes 会创建一个名为 kubernetes.default 的 Service 用来指向 ApiServer。
+在 POD 启动时，Kubernetes 会默认为容器挂载一个 Service Account（服务账号）的 token 和证书。另外，默认情况下 Kubernetes 会创建一个名为 kubernetes.default 的 Service 用来指向 ApiServer。
 
-有了上述两个条件，我们就拥有了在容器内和 APIServer 通信和交互的方式。
+Service 的域名格式如下图PPT所示，在容器里访问这个域名就能访问到 APIServer：
+<img width="2036" height="1078" alt="image" src="https://github.com/user-attachments/assets/405a6f38-fef1-4d4c-942d-f4fa2f9dc40d" />
+
+
+有了上述两个条件，我们就拥有了在容器内和 APIServer 通信和交互的方式，而且是带有 ServiceAccount 身份凭据的访问 apiserver。
 
 Kubernetes Default Service
 
